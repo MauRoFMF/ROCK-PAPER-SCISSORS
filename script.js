@@ -1,35 +1,35 @@
 let computerPlay = function () {
   let guess = Math.trunc(Math.random() * 3) + 1;
   if (guess === 1) {
-    computerPlay = "Rock";
+    computerPlay = "rock";
   } else if (guess === 2) {
-    computerPlay = "Paper";
+    computerPlay = "paper";
   } else {
-    computerPlay = "Scissors";
+    computerPlay = "scissors";
   }
 };
 
 computerPlay();
-
-console.log(computerPlay);
+console.log(`The computer selected ${computerPlay}`);
 
 let roundResult = function (playerSelection, computerSelection) {
+  playerSelection = playerSelection.toLowerCase();
   if (playerSelection === computerSelection) {
     console.log("Its a Tie!");
-  } else if (playerSelection === "Rock") {
-    if (computerSelection === "Paper") {
+  } else if (playerSelection === "rock") {
+    if (computerSelection === "paper") {
       console.log("CPU won, Paper beats Rock! ");
     } else {
       console.log("Player won, Rock beats Scissors");
     }
-  } else if (playerSelection === "Paper") {
-    if (computerSelection === "Scissors") {
+  } else if (playerSelection === "paper") {
+    if (computerSelection === "scissors") {
       console.log("CPU won, Scissors beats Paper");
     } else {
       console.log("Player won, Paper beats Rock");
     }
-  } else if (playerSelection === "Scissors") {
-    if (computerSelection === "Rock") {
+  } else if (playerSelection === "scissors") {
+    if (computerSelection === "rock") {
       console.log("CPU won,Rock beats Scissors");
     } else {
       console.log("Player won, Paper beats Rock");
@@ -37,4 +37,4 @@ let roundResult = function (playerSelection, computerSelection) {
   }
 };
 
-console.log(roundResult("Rock", computerPlay));
+roundResult("RocK", computerPlay);
