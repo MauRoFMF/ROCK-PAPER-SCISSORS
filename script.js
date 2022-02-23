@@ -1,40 +1,61 @@
 let computerPlay = function () {
   let guess = Math.trunc(Math.random() * 3) + 1;
   if (guess === 1) {
-    computerPlay = "rock";
+    return "rock";
   } else if (guess === 2) {
-    computerPlay = "paper";
+    return "paper";
   } else {
-    computerPlay = "scissors";
+    return "scissors";
   }
 };
 
-computerPlay();
-console.log(`The computer selected ${computerPlay}`);
-
-let roundResult = function (playerSelection, computerSelection) {
+let playRound = function (playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   if (playerSelection === computerSelection) {
-    console.log("Its a Tie!");
+    return "Its a Tie!";
   } else if (playerSelection === "rock") {
     if (computerSelection === "paper") {
-      console.log("CPU won, Paper beats Rock! ");
+      return cpuScore++; //"CPU won, Paper beats Rock! ";
     } else {
-      console.log("Player won, Rock beats Scissors");
+      return playerScore++; //"Player won, Rock beats Scissors";
     }
   } else if (playerSelection === "paper") {
     if (computerSelection === "scissors") {
-      console.log("CPU won, Scissors beats Paper");
+      return cpuScore++; //"CPU won, Scissors beats Paper";
     } else {
-      console.log("Player won, Paper beats Rock");
+      return playerScore++; //"Player won, Paper beats Rock";
     }
   } else if (playerSelection === "scissors") {
     if (computerSelection === "rock") {
-      console.log("CPU won,Rock beats Scissors");
+      return cpuScore++; //"CPU won,Rock beats Scissors";
     } else {
-      console.log("Player won, Paper beats Rock");
+      return playerScore++; //"Player won, Paper beats Rock";
     }
   }
 };
 
-roundResult("RocK", computerPlay);
+let playerSelection = "Rock";
+
+//console.log("CPU", computerSelection, "Player", playerSelection);
+
+//console.log(playRound(playerSelection, computerSelection));
+
+let game = function () {
+  playerScore = 0;
+  cpuScore = 0;
+  for (let i = 0; i < 5; i++) {
+    playerSelection = prompt("Rock, Paper or Scissors. Pick one!");
+    console.log(playRound(playerSelection, computerPlay()));
+
+    console.log(playerScore, cpuScore);
+  }
+  if (playerScore === cpuScore) {
+    console.log("Its a Tie!");
+  } else if (playerScore > cpuScore) {
+    console.log("Player Wins!!!");
+  } else {
+    console.log("CPU Wins!!!");
+  }
+};
+
+game();
